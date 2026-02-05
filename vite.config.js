@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-
+import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
     plugins: [
@@ -10,7 +10,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            'vue': `${import.meta.dir}/node_modules/vue/dist/vue.runtime-with-vapor.esm-browser.js`
+            'vue': fileURLToPath(new URL('./node_modules/vue/dist/vue.runtime-with-vapor.esm-browser.js', import.meta.url))
         }
     },
     server: {
@@ -21,4 +21,3 @@ export default defineConfig({
         target: 'esnext'
     }
 })
-
